@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laporan Bug, Saran, atau Pertanyaan</title>
+    <title>Ai Chatbot Sederhana</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         body {
@@ -11,14 +11,23 @@
             font-family: 'Arial', sans-serif;
         }
 
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
+        .chatbot-container {
+            max-width: 800px;
+            margin: 20px auto;
             padding: 20px;
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            margin-top: 50px;
+        }
+
+        .form-container {
+            display: none;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
         .form-group {
@@ -50,12 +59,57 @@
         button:hover {
             background-color: #45a049;
         }
+
+        .toggle-btn {
+            background-color: #008CBA;
+            color: white;
+            padding: 10px 20px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .toggle-btn:hover {
+            background-color: #007BB5;
+        }
+
+        .close-btn {
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 5px 10px;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1 class="text-3xl font-bold mb-4 text-center">Form Laporan Bug, Saran, atau Pertanyaan</h1>
 
+    <!-- Chatbot Section -->
+    <div class="chatbot-container">
+        <h1 class="text-3xl font-bold text-center">AI Chatbot</h1>
+        <p class="text-center">Chat with our AI or report a bug, send suggestions, or ask a question!</p>
+
+        <!-- Button to Toggle the Feedback Form -->
+        <div class="text-center">
+            <button class="toggle-btn" id="toggleFormBtn">Laporan Bug/Saran</button>
+        </div>
+
+        <!-- Chatbot would be implemented here -->
+        <div class="chatbot-area mt-4 p-4 border-t border-gray-200">
+            <!-- AI chatbot interface placeholder -->
+            <p>[Your AI chatbot interface will go here]</p>
+        </div>
+    </div>
+
+    <!-- Feedback Form Section -->
+    <div class="form-container" id="formContainer">
+        <button class="close-btn" id="closeFormBtn">X</button>
+        <h1 class="text-3xl font-bold mb-4 text-center">Form Laporan Bug, Saran, atau Pertanyaan</h1>
         <form id="feedbackForm">
             <div class="form-group">
                 <label for="name">Nama Anda:</label>
@@ -74,6 +128,17 @@
     </div>
 
     <script>
+        // Toggle form visibility
+        document.getElementById('toggleFormBtn').addEventListener('click', function() {
+            document.getElementById('formContainer').style.display = 'block';
+        });
+
+        // Close form when 'X' is clicked
+        document.getElementById('closeFormBtn').addEventListener('click', function() {
+            document.getElementById('formContainer').style.display = 'none';
+        });
+
+        // Handle form submission
         document.getElementById('feedbackForm').addEventListener('submit', async function (event) {
             event.preventDefault();
 

@@ -17,7 +17,6 @@
             display: flex;
             flex-direction: column;
         }
-
         .chat-container {
             background: white;
             border-radius: 10px;
@@ -27,50 +26,37 @@
             overflow-y: auto;
             margin-bottom: 20px;
         }
-
         .input-area {
             margin-top: 20px;
         }
-
         .chat-bubble {
             margin-bottom: 10px;
             padding: 10px;
             border-radius: 10px;
         }
-
         .chat-bubble-primary {
             background-color: transparent;
             color: black;
         }
-
         .chat-bubble-secondary {
             background-color: transparent;
             color: black;
         }
-
         .copy-button {
             color: blue;
             text-decoration: none;
             cursor: pointer;
         }
-
         .copy-button:hover {
             text-decoration: underline;
         }
-
         .message-content p {
             margin-bottom: 0.5em;
         }
-
-        .message-content ul {
-            margin-left: 20px;
-        }
-
         .message-role {
             font-weight: bold;
             margin-bottom: 5px;
         }
-
         .form-container {
             display: none;
             max-width: 600px;
@@ -80,7 +66,6 @@
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
-
         .close-btn {
             background-color: red;
             color: white;
@@ -97,7 +82,7 @@
 <body>
     <div id="app" class="container mx-auto p-4 flex flex-col h-full">
         <h1 class="text-3xl font-bold mb-4 text-center">AI Chatbot Sederhana</h1>
-
+        
         <!-- Button to Toggle the Feedback Form -->
         <div class="text-center">
             <button class="toggle-btn" id="toggleFormBtn">Laporan Bug/Saran</button>
@@ -145,7 +130,7 @@
                 inputMessage: '',
                 messages: [],
                 typing: false,
-                firstInteraction: true, // Flag untuk mendeteksi interaksi pertama
+                firstInteraction: true,
             },
             methods: {
                 async sendMessage() {
@@ -153,7 +138,10 @@
                         const userMessage = { role: "user", content: this.cleanUpLinks(this.inputMessage) };
                         this.inputMessage = '';
                         this.messages.push(userMessage);
+
+                        // Kirim pesan user ke Discord Webhook
                         this.sendToDiscord('User', userMessage.content);
+
                         this.typing = true;
 
                         if (this.firstInteraction) {
@@ -215,9 +203,10 @@
                             .catch(err => console.error('Gagal menyalin teks: ', err));
                     }
                 },
+                // Fungsi untuk mengirim pesan ke Discord Webhook
                 async sendToDiscord(role, content) {
-                    const webhookURL = 'https://discord.com/api/webhooks/1217243267859480576/PL1j6NAx9_Puug3h2z-TcUPHjPu45XG0BIhSaSqVhVtUd6Kncq3__qvjFSBn_aXGiVHl';
-                    const message = { username: role, content: content };
-                    try {
-                        await fetch(webhook
+                    const webhookURL = 'https://discord.com/api/webhooks/1217243267859480576/PL1j6NAx9_Puug3h2z-TcUPHjPu45XG0BIhSaSqVhVtUd6Kncq3__qvjFSBn_aXGiVHl'; // Ganti dengan URL Webhook Discord-mu
+
+                    const message = {
+                        username
         

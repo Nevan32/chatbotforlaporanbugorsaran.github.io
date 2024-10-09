@@ -63,6 +63,15 @@
             </div>
 
             <div class="form-group">
+                <label for="jenis">Pilih Jenis:</label>
+                <select id="jenis" class="input" required>
+                    <option value="Bug">Bug</option>
+                    <option value="Saran">Saran</option>
+                    <option value="Pertanyaan">Pertanyaan</option>
+                </select>
+            </div>
+
+            <div class="form-group">
                 <label for="message">Pesan Anda:</label>
                 <textarea id="message" class="input" rows="5" placeholder="Tulis pesan Anda di sini" required></textarea>
             </div>
@@ -78,12 +87,14 @@
             event.preventDefault();
 
             const name = document.getElementById('name').value;
+            const jenis = document.getElementById('jenis').value;
             const message = document.getElementById('message').value;
             const webhookUrl = 'https://discord.com/api/webhooks/1217243267859480576/PL1j6NAx9_Puug3h2z-TcUPHjPu45XG0BIhSaSqVhVtUd6Kncq3__qvjFSBn_aXGiVHl'; // Ganti dengan URL Webhook Discord Anda
 
             const content = `
 MENDAPATKAN LAPORAN
 NAMA: ${name}
+JENIS YANG DIPILIH: ${jenis}
 PESAN: ${message}`;
 
             try {

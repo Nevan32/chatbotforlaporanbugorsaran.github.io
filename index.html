@@ -1,5 +1,6 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +11,6 @@
             background-color: #f8fafc;
             font-family: 'Arial', sans-serif;
         }
-
         .container {
             max-width: 600px;
             margin: 0 auto;
@@ -20,24 +20,20 @@
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             margin-top: 50px;
         }
-
         .form-group {
             margin-bottom: 20px;
         }
-
         label {
             font-weight: bold;
             display: block;
             margin-bottom: 5px;
         }
-
         .input, textarea {
             width: 100%;
             padding: 10px;
             border-radius: 5px;
             border: 1px solid #ccc;
         }
-
         button {
             background-color: #4CAF50;
             color: white;
@@ -46,39 +42,35 @@
             border-radius: 5px;
             cursor: pointer;
         }
-
         button:hover {
             background-color: #45a049;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1 class="text-3xl font-bold mb-4 text-center">Form Laporan Bug, Saran, atau Pertanyaan</h1>
-
         <form id="feedbackForm">
             <div class="form-group">
                 <label for="name">Nama Anda:</label>
                 <input type="text" id="name" class="input" placeholder="Masukkan nama Anda" required>
             </div>
-
             <div class="form-group">
                 <label for="jenis">Pilih Jenis:</label>
                 <select id="jenis" class="input" required>
+                    <option value="" disabled selected>Pilih</option>
                     <option value="Bug">Bug</option>
                     <option value="Saran">Saran</option>
                     <option value="Pertanyaan">Pertanyaan</option>
                 </select>
             </div>
-
             <div class="form-group">
                 <label for="message">Pesan Anda:</label>
                 <textarea id="message" class="input" rows="5" placeholder="Tulis pesan Anda di sini" required></textarea>
             </div>
-
             <button type="submit">Kirim</button>
         </form>
-
         <p id="responseMessage" class="mt-4 text-green-500"></p>
     </div>
 
@@ -117,4 +109,5 @@ PESAN: ${message}`;
         });
     </script>
 </body>
+
 </html>
